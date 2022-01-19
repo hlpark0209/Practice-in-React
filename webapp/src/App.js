@@ -105,8 +105,7 @@ class App extends Component {
         
         <Subject onClick = {function(){
           this.setState({mode: 'welcome'});
-        }}
-        title="WEB이란 무엇인가" sub="World Wide Web 알아보기"></Subject>
+        }.bind(this)}title="WEB이란 무엇인가" sub="World Wide Web 알아보기"></Subject>
         <TOC onSelect={function(id){
           //this.sstate.seleccted_content_id의 값을 id값으로 바꾸어라
           this.setState({
