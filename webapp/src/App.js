@@ -65,8 +65,40 @@ class Contents extends Component{
 }
 
 
-
+class Create extends Component{
+  state = {
+    title : '',
+    desc : ''
+  }
+  onChangeForm(e){
+    this.setState({[e.target.name] : e.target.value});
+  }
+  render(){
+    return (
+      <article>
+        <form onSubmit={function(e){
+          e.preventDefault();
+          this.props.onSubmit(this.state);
+          }.bind(this)}>
+          <p><input
+            type="text" placeholder='Write title'
+            name = 'title'
+            value={this.state.title}
+            onChange={this.onChangeForm.bind(this)}></input></p>
+          <p><textarea
+              placeholder='Write description'
+              name = 'desc'
+              value={this.state.desc}
+              onChange={this.onChangeForm.bind(this)}
+              ></textarea></p>
+          <p><input type="submit"></input></p>
+        </form>
+      </article>
+    );
+  }
+}
 class App extends Component {
+  lastContentId = 3;
   // 배열을 가진 객체 생성
   state = {
     mode :'read',
@@ -95,9 +127,48 @@ class App extends Component {
         title : 'welcome to WEB WORLD!',
         desc : 'HELLO REACT !'
       }}></Contents>
+    } else if( this.state.mode === 'create'){
+      return <Create onSubmit={function(formData){
+        console.log(formData);
+        this.lastContentId = this.lastContentId + 1;
+        formData.id = this.lastContentId;
+        //내용복사
+        var newContents = Object.assign([], this.state.contents);
+        newContents.push(formData);
+        this.setState({
+          contents:newContents,
+          seleccted_content_id : this.lastContentId,
+          mode:'read'
+        });
+      }.bind(this)}></Create>
     }
     
   }
+
+  getControlBtn(){
+    return [
+      <a key ="1" href='/create' onClick={function(e){
+        e.preventDefault();
+        this.setState({ mode : 'create'});
+      }.bind(this)}>create</a>,
+      <a key ="2" href='/update'  onClick={function(e){
+        e.preventDefault();
+        
+      }.bind()}>update</a>,
+      <input key ="3" type="button" onClick={function(){
+        var newContents = this.state.contents.filter(function(el){
+          if(el.id !== this.state.seleccted_content_id){
+            return el;
+          }
+        }.bind(this));
+        this.setState({
+          contents : newContents,
+          mode : 'welcome'
+        });
+      }.bind(this)} value="delete"></input>,
+    ];
+  }
+
   render(){
     var content = this.getSelected();
     return (
@@ -114,7 +185,13 @@ class App extends Component {
           });
         }.bind(this)} 
         data={this.state.contents}></TOC>
-        
+
+
+
+        {/* 수정/삭제버튼 생성 */}
+        {this.getControlBtn()}
+
+
         {this.getContentComponent()}
 
       </div>
