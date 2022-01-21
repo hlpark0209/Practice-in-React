@@ -4,30 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+    
     <title>React begginer</title>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <div>
+            <h3> Super Converter</h3>
+            <lable>minutes</lable>
+            <input placeholder="minutes"  type="number"/>
+            <lable>hours</lable>
+            <input placeholder="hours" type="number"/>
+        </div>
+    </div>
+
 </body>
 <script>
     const root = document.getElementById("root");
+    
     function App(){
         return (
-            <div>
-                <h3> Total Clicks : 0 </h3>
-                <button>click me!</button>
-            </div>
+            
         );
     }
-    React.DOM.render( <App />, root);
+    ReactDOM.render( <App />, root);
 
     // useState() : modifier 함수를 이용해서 state를 바꾸면 컴포넌트가 재생성되고 코드가 재생성됨
     // 새로운 값을 가지고 리렌더링됨 ( 재생성 )
     // state가 바뀌면 리렌더링됨 ( 변경되는 부분만 바뀜 )
 
-
-    console.log(root);
+    // const [counter, setCounter] = React.useState(); 에서
+    // React.useState() 는 react기능을 쓸 수있게 해주는 하나의 도구이고,
+    // counter은 현재의 값 state 이며,
+    // setCounter은 이벤트 발생시 변화를 주는 부분이어서 이후 counter로 다시 저장
 </script>
 </html>
