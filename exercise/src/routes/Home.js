@@ -29,6 +29,7 @@ function Home(){
                         <Movie 
                             //react에서 map안에서 component들을 render할떄 사용
                             key={item.id}
+                            id ={item.id}
                             title={item.title_long}
                             genres={item.genres}
                             summary={item.summary}

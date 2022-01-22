@@ -11,7 +11,7 @@ function MovieApp() {
     return(
     <Router>
         <Switch> {/*  Switch : route ( URL )를 찾아서 -> 한번에 하나의 router를 render */}
-            <Route path="/movie">
+            <Route path="/movie/:id">
                 <Detail />
             </Route>
             <Route path="/">   {/*Home.js를 render */}
