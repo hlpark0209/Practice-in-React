@@ -1,5 +1,6 @@
 import { oneOfType } from 'prop-types';
 import { useEffect, useState } from 'react';
+import Movie from "./Movie";
 
 function MovieApp() {
     const [loading, setLoading] = useState(true);
@@ -21,13 +22,16 @@ function MovieApp() {
             <h2>3. Movie App ({movie.length})</h2>
             {loading ? <h4>Loading...</h4> : 
                 <div>
-                    {movie.map( item => (
-                        <ul key={item.id}>
-                            <h3><a href={item.url}>{item.title_long}</a></h3>
-                            <span>Genres: {item.genres}</span>
-                            <p>{item.summary}</p>
-                            <img src={item.medium_cover_image}/ >
-                        </ul>
+                    {/* props으로써 Movie.js로 넘겨서 사용*/}
+                    {movie.map( (item) => (
+                        <Movie 
+                            //react에서 map안에서 component들을 render할떄 사용
+                            key={item.id}
+                            title={item.title_long}
+                            genres={item.genres}
+                            summary={item.summary}
+                            image={item.medium_cover_image}
+                        />
                     ))}
                 </div>        
             }
