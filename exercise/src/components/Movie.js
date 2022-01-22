@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 // Movie의 component가 해당 정보들을 parent component( MovieApp.js )로부터 받아옴
-function Movie( {title_long, genres, summary, image}){
+function Movie( {title, genres, summary, image}){
     return (
         <ul>
-            <h3>{title_long}</h3>
+            <h3><Link to="/movie">{title}</Link></h3>
             <span>Genres: {genres}</span>
             <p>{summary}</p>
-            <img src={image} alt={title_long} />
+            <img src={image} alt={title} />
         </ul>
     );
 }
@@ -15,10 +16,10 @@ function Movie( {title_long, genres, summary, image}){
 
 // prop Types설정
 Movie.propTypes = {
-    title_long: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     genres: PropTypes.arrayOf(PropTypes.string).isRequired,
     summary: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired
 }
 
 

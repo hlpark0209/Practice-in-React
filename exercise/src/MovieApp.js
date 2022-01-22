@@ -10,7 +10,7 @@ import Detail from "./routes/Detail";
 function MovieApp() {
     return(
     <Router>
-        <Switch> {/*  Switch : route ( URL )를 찾아서 -> component를 render */}
+        <Switch> {/*  Switch : route ( URL )를 찾아서 -> 한번에 하나의 router를 render */}
             <Route path="/movie">
                 <Detail />
             </Route>
