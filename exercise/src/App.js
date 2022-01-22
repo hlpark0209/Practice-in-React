@@ -23,7 +23,6 @@ function App() {
       setToDOs( currenArray => [...currenArray, todo]);
       setToDO("");
   };
-  console.log(todos);
     
 
 

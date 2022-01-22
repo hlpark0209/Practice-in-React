@@ -28,7 +28,7 @@ function CoinTracker() {
         ))}
       </select>
       }
-      
+      <hr />
     </div>
   );
 };
