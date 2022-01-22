@@ -1,43 +1,10 @@
-import { oneOfType } from 'prop-types';
-import { useEffect, useState } from 'react';
-import Movie from "./Movie";
+// App.js 는 영화를 보여주지 않고 ( 이전에는 영화를 보여주는 페이지였음 ) 
+// rounter를 render하는 역할로 변경 ( rounter는 URL를 보고있는 component임 )
+// MovieApp => rountes => URL 주소에 따라 1. Home.js를 render
+//                                   2. Detail.js를 render
 
 function MovieApp() {
-    const [loading, setLoading] = useState(true);
-    const [movie, setMovies] = useState([]);
-    useEffect( () => {
-        fetch("https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year")
-        .then(response => response.json())
-        .then(json => {
-            setMovies(json.data.movies);
-            setLoading(false);
-        });
-    },[]);
-    console.log(movie);
-    
-    
-
-    return (
-        <div>
-            <h2>3. Movie App ({movie.length})</h2>
-            {loading ? <h4>Loading...</h4> : 
-                <div>
-                    {/* props으로써 Movie.js로 넘겨서 사용*/}
-                    {movie.map( (item) => (
-                        <Movie 
-                            //react에서 map안에서 component들을 render할떄 사용
-                            key={item.id}
-                            title={item.title_long}
-                            genres={item.genres}
-                            summary={item.summary}
-                            image={item.medium_cover_image}
-                        />
-                    ))}
-                </div>        
-            }
-
-        </div>
-    );
+    return null;
 }
 
 export default MovieApp;
