@@ -3,8 +3,23 @@
 // MovieApp => rountes => URL 주소에 따라 1. Home.js를 render
 //                                   2. Detail.js를 render
 
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Home from "./routes/Home";
+import Detail from "./routes/Detail";
+
 function MovieApp() {
-    return null;
+    return(
+    <Router>
+        <Switch> {/*  Switch : route ( URL )를 찾아서 -> component를 render */}
+            <Route path="/movie">
+                <Detail />
+            </Route>
+            <Route path="/">   {/*Home.js를 render */}
+                <Home />
+            </Route>
+        </Switch> 
+    </Router>
+    );
 }
 
 export default MovieApp;
